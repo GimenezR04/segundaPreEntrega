@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error al cargar el JSON:', error));
 
-    // Verificar si hay un pago mensual guardado en localStorage y mostrarlo
-    const ultimoPagoMensual = localStorage.getItem('ultimoPagoMensual');
+    
+    let ultimoPagoMensual = localStorage.getItem('ultimoPagoMensual');
     if (ultimoPagoMensual) {
         document.getElementsByClassName('mensualidad')[0].textContent = `Último pago mensual: $${ultimoPagoMensual}`;
     }
@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         prestamos.push(prestamo2);
 
-        // Guardar el último pago mensual en localStorage
+       
         localStorage.setItem('ultimoPagoMensual', prestamo2.mensualidad);
 
-        // Actualizar el contenido de texto del elemento con la clase 'mensualidad'
+        
         document.getElementsByClassName('mensualidad')[0].textContent = `Pago mensual: $${prestamo2.mensualidad}`;
 
         displayPrestamos(prestamos);
@@ -64,3 +64,5 @@ document.addEventListener('DOMContentLoaded', function() {
         displayPrestamos(filtradoDePrestamos);
     });
 });
+
+const axios = require ('axios');
